@@ -1,0 +1,244 @@
+/** BUTTONS **/
+.btn{
+    padding: 1rem 2rem;
+    background-color: $light-color;
+    color: $primary-color;
+    font-size: 1.6rem;
+    border: none;
+    outline: none;
+    letter-spacing: 2px;
+    transition: all .5s;
+    &:hover{
+        background-color: $primary-color;
+        color: $light-color;
+    }
+
+    &-primary{ //.btn-primary
+        background-color: $primary-color;
+        color: $light-color;
+
+        &:hover{    //.btn-primary:hover
+            background-color: $light-color;
+            color: $primary-color;
+        }
+    }
+
+    @include media(medium){
+        padding: .5rem 1rem;
+    }
+}
+
+/** BADGES **/
+.badge{
+    border: none;
+    padding: .2rem 2rem;
+    font-size: 1.6rem;
+    color: $light-color;
+    background-color: $primary-color;
+    margin: 3rem;
+    letter-spacing: .1rem;
+
+}
+
+/** RATİNG **/
+.rating{
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    background-color: $light-color;
+    border-radius: 50%;
+    margin-left: 1.5rem;
+    margin-top: 1.5rem;
+    line-height: 3rem;
+    font-size: 1.4rem;
+    font-family: $primary-font;
+    text-align: center;
+    transition: all .5s;
+    opacity: 0;
+    z-index: 100;
+    color: $primary-color;
+
+}
+
+/** REVİEWES **/
+
+.review{
+    padding: 5rem;
+    font-size: 1.3rem;
+    line-height: 1.8;
+    margin-left: 6rem;
+    border-left: 2px $primary-color solid;
+    border-bottom: 2px $primary-color solid;
+    transform: skew(-20deg);
+
+    @include media(large){
+        transform: skew(0deg);
+        border: none;
+        margin-left: 0;
+    }
+
+
+    & > * {
+        transform: skew(20deg);
+        @include media(large){
+            transform: skew(0deg);}
+    }
+
+    &-title{
+        color: $primary-color;
+        font-size: 2rem;
+    }
+
+    &-tags{
+        font-size: 1.5rem;
+        color: $light-color;
+        text-transform: uppercase;
+    }
+
+    &-text{
+        margin: 1rem 0;
+
+    }
+
+    &-user{
+        display: flex;
+        align-items: center;
+
+        @include media(small){
+            flex-wrap: wrap;
+        }
+
+        img{
+            width: 8rem;
+            margin-right: 3rem;
+            border-radius: 50%;
+        }
+
+        &-detail{
+            font-family: $primary-font;
+            margin-right: 3rem;
+
+            .review-user-name{
+                color: $primary-color;
+            }
+
+            .review-user-date{
+                color: $date-color;
+            }
+
+        }
+
+        &-platform{
+            :not(:last-child){
+                color: $primary-color;
+            }
+
+            .fab{
+                margin: 0 0.4rem;
+
+            }
+        }
+
+        &-rating{
+            margin-left: auto;
+
+            @include media(small){ margin-left: 40%; margin-top: 2rem;}
+                        
+            .checked{
+                color: $primary-color;
+            }            
+        }
+    }
+}
+
+/** CARDS **/
+
+.card{
+    height: 38rem;
+    perspective: 1000px;
+
+    @include media(large){
+        height: 33rem;
+    }
+    @include media(medium){
+        height: 27rem;
+    }
+    @include media(small){
+        height: 20rem;
+    }
+
+    &-inner{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+    }
+
+    .card-frond, .card-back{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        transition: all 1s;
+    }
+
+    .card-frond{
+    background-color: $primary-color;
+
+    h4{
+        justify-content: center;
+        align-items: center;
+        color: $light-color;
+        font-size: 1.6rem;
+        font-style: $primary-font;
+    }
+    }
+
+    .card-back{
+        background-color: $secondary-color;
+        transform: rotateY(180deg);
+        display: table;
+
+        &-content{
+            display: table-cell;
+            vertical-align: middle;
+
+            p{
+                font-size: 1.8rem;
+                color: $light-color;
+            }
+
+            a{
+                margin: 1rem;
+                color: $light-color;
+                font-size: 1.2rem;
+                transition: all .5s;
+
+                i{
+                    @include media(small){
+                        margin-top: .5rem;
+                    }
+                }
+
+                @include media(small){
+                    margin: .5rem;
+                    font-size: 1rem;
+                }
+
+                &:hover{
+                    color: $primary-color;
+                    transform: scale(2rem)                }
+            }
+        }
+    }
+
+    &:hover .card-frond{
+        transform: rotateY(180deg);
+    }
+
+    &:hover .card-back{
+        transform: none;
+    }
+}
